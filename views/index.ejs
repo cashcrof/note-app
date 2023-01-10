@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Notes App</h1>
+
+    <form action="create-note" method="post">
+        <input type="text" name="title" id="title" placeholder="title">
+        <textarea name="contents" id="contents" placeholder="write your note here"></textarea>
+        <button type="submit">Add Note</button>
+    </form>
+
+    <ul>
+    <% console.log(notes); for (let i = 0; i < notes.length; i++) { %> 
+        <li>
+            <h3><%= notes[i].title %> </h3>
+            <p><%= notes[i].contents %> </p>
+            <form action="/delete" method="post">
+                <input type="hidden" name="id" id="id" value="<%= notes[i].id %> ">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    <% } %> 
+    </ul>
+
+</body>
+</html>
